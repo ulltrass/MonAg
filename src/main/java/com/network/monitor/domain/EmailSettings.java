@@ -15,6 +15,7 @@ public class EmailSettings {
     private String serverPort;
     private String userName;
     private String password;
+    private Integer priorityId;
     private boolean enabled;
     private boolean defaultEmail;
 
@@ -25,6 +26,16 @@ public class EmailSettings {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+
+    public Integer getPriorityId() {
+        return priorityId;
+    }
+
+    public void setPriorityId(Integer priorityId) {
+        this.priorityId = priorityId;
+    }
+    
+    
 
     public boolean isDefaultEmail() {
         return defaultEmail;

@@ -148,8 +148,8 @@ public class MainForm extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         cancelButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        moveUpButton = new javax.swing.JButton();
+        moveDownButton = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -625,9 +625,21 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Move Up");
+        moveUpButton.setText("Move Up");
+        moveUpButton.setEnabled(false);
+        moveUpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveUpButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Move Down");
+        moveDownButton.setText("Move Down");
+        moveDownButton.setEnabled(false);
+        moveDownButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveDownButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -647,9 +659,9 @@ public class MainForm extends javax.swing.JFrame {
                                 .addComponent(deleteMailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(moveUpButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)))
+                                .addComponent(moveDownButton)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -686,8 +698,8 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2)))
+                        .addComponent(moveUpButton)
+                        .addComponent(moveDownButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -1001,6 +1013,14 @@ public class MainForm extends javax.swing.JFrame {
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         changeEmailSettingsFormEdit();
     }//GEN-LAST:event_editButtonActionPerformed
+
+    private void moveUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveUpButtonActionPerformed
+        
+    }//GEN-LAST:event_moveUpButtonActionPerformed
+
+    private void moveDownButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveDownButtonActionPerformed
+       
+    }//GEN-LAST:event_moveDownButtonActionPerformed
 //
 //    /**
 //     * @param args the command line arguments
@@ -1055,8 +1075,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JCheckBox enabledCheckBox;
     private javax.swing.JTable eventsTable;
     private javax.swing.JTextField ipv4TextField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1104,6 +1122,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField macTextField;
     private javax.swing.JTextField mailServerHost;
     private javax.swing.JFormattedTextField mailServerPortTextField;
+    private javax.swing.JButton moveDownButton;
+    private javax.swing.JButton moveUpButton;
     private javax.swing.JTextField osNameTextFieldComp;
     private javax.swing.JTextField osVersionTextField;
     private javax.swing.JTextField ramTextField;
@@ -1203,7 +1223,7 @@ public class MainForm extends javax.swing.JFrame {
     private void initEmailSettingsList() {
         emailSettingsListModel = new DefaultListModel();
         emailSettingList.setModel(emailSettingsListModel);
-
+        
         emailSettingsListModel.clear();
         for (EmailSettings emailSettings : setting.getEmailSettings()) {
             emailSettingsListModel.addElement(emailSettings.getConfigName());
@@ -1228,6 +1248,10 @@ public class MainForm extends javax.swing.JFrame {
                 emailPasswordField.setText(emailSettings.getPassword());
                 deleteMailButton.setEnabled(true);
                 editButton.setEnabled(true);
+                if (emailSettingsListModel.size() > 1){
+                    moveUpButton.setEnabled(true);
+                    moveDownButton.setEnabled(true);
+                }
             }
         };
         emailSettingList.addListSelectionListener(s);
