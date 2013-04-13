@@ -36,6 +36,7 @@ public class AppSettingsService {
     public static final String EMAIL_PORT = "email.port=";
     public static final String EMAIL_ENABLED = "email.enabled=";
     public static final String EMAIL_DEFAULT = "email.default=";
+    public static final String EMAIL_PRIORITY = "email.priority=";
 
     public void saveSettings(Setting setting) {
         List<String> linesToSave = new ArrayList<String>();
@@ -80,8 +81,10 @@ public class AppSettingsService {
         linesToSave.add(EMAIL_PORT + emailSettings.getServerPort());
         linesToSave.add(EMAIL_ENABLED + emailSettings.isEnabled());
         linesToSave.add(EMAIL_DEFAULT + emailSettings.isDefaultEmail());
+        linesToSave.add(EMAIL_PRIORITY + emailSettings.getPriorityId());
 
-        FileUtil.saveContentToFile(SETTINGS_PATH, emailSettings.getConfigName() + EMAIL_SETTINGS_FILE, linesToSave);
+        FileUtil.saveContentToFile(SETTINGS_PATH, emailSettings.getPriorityId() + "-" +
+                emailSettings.getConfigName() + EMAIL_SETTINGS_FILE, linesToSave);
     }
     
     public void updateEmailSettings(EmailSettings emailSettings, String oldConfigName) {
@@ -94,6 +97,7 @@ public class AppSettingsService {
         linesToSave.add(EMAIL_PORT + emailSettings.getServerPort());
         linesToSave.add(EMAIL_ENABLED + emailSettings.isEnabled());
         linesToSave.add(EMAIL_DEFAULT + emailSettings.isDefaultEmail());
+        linesToSave.add(EMAIL_PRIORITY + emailSettings.getPriorityId());
         FileUtil.deleteConfigFile(SETTINGS_PATH, oldConfigName + EMAIL_SETTINGS_FILE);
 
         FileUtil.saveContentToFile(SETTINGS_PATH, emailSettings.getConfigName() + EMAIL_SETTINGS_FILE, linesToSave);
@@ -159,6 +163,9 @@ public class AppSettingsService {
                 }
                 if (line.startsWith(EMAIL_PASSWORD)) {
                     emailSetting.setPassword(line.split("=")[1]);
+                }
+                 if (line.startsWith(EMAIL_PRIORITY)) {
+                    emailSetting.setPriorityId(Integer.parseInt(line.split("=")[1]));
                 }
             }
             emailSettings.add(emailSetting);

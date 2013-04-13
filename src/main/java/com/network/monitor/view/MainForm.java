@@ -900,11 +900,11 @@ public class MainForm extends javax.swing.JFrame {
         boolean isUpdate = false;
         EmailSettings emailSettings = null;
         String oldConfigName = "";
-
+        Integer priorityId = 0;
 
         if ((selectedIndex = emailSettingList.getSelectedIndex()) != -1) {
             emailSettings = setting.getEmailSettings().get(selectedIndex);
-            oldConfigName = emailSettings.getConfigName();
+            oldConfigName = emailSettings.getPriorityId() + "-" + emailSettings.getConfigName();
             isUpdate = true;
         }
 
@@ -913,6 +913,7 @@ public class MainForm extends javax.swing.JFrame {
         if (isValid) {
             if (!isUpdate) {
                 emailSettings = new EmailSettings();
+                emailSettings.setPriorityId(setting.getEmailSettings().size());
             }
             emailSettings.setConfigName(configNameTextField.getText().trim());
             emailSettings.setServerHost(mailServerHost.getText().trim());
@@ -969,6 +970,7 @@ public class MainForm extends javax.swing.JFrame {
         changeEmailSettingsFormStatus(false);
         editButton.setEnabled(false);
         settingsController.deleteEmailSetting(emailConfigName);
+        setting.getEmailSettings().remove(selectedIndex);
 
     }//GEN-LAST:event_deleteMailButtonActionPerformed
 
@@ -1015,11 +1017,15 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void moveUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveUpButtonActionPerformed
-        
+        int selectedIndex = emailSettingList.getSelectedIndex();
+        if (selectedIndex > 0) {
+            EmailSettings emailSettings = setting.getEmailSettings().get(selectedIndex);
+            emailSettingList.setSelectedIndex(selectedIndex - 1);
+        }
+
     }//GEN-LAST:event_moveUpButtonActionPerformed
 
     private void moveDownButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveDownButtonActionPerformed
-       
     }//GEN-LAST:event_moveDownButtonActionPerformed
 //
 //    /**
@@ -1223,7 +1229,7 @@ public class MainForm extends javax.swing.JFrame {
     private void initEmailSettingsList() {
         emailSettingsListModel = new DefaultListModel();
         emailSettingList.setModel(emailSettingsListModel);
-        
+
         emailSettingsListModel.clear();
         for (EmailSettings emailSettings : setting.getEmailSettings()) {
             emailSettingsListModel.addElement(emailSettings.getConfigName());
@@ -1248,7 +1254,7 @@ public class MainForm extends javax.swing.JFrame {
                 emailPasswordField.setText(emailSettings.getPassword());
                 deleteMailButton.setEnabled(true);
                 editButton.setEnabled(true);
-                if (emailSettingsListModel.size() > 1){
+                if (emailSettingsListModel.size() > 1) {
                     moveUpButton.setEnabled(true);
                     moveDownButton.setEnabled(true);
                 }
