@@ -100,7 +100,8 @@ public class AppSettingsService {
         linesToSave.add(EMAIL_PRIORITY + emailSettings.getPriorityId());
         FileUtil.deleteConfigFile(SETTINGS_PATH, oldConfigName + EMAIL_SETTINGS_FILE);
 
-        FileUtil.saveContentToFile(SETTINGS_PATH, emailSettings.getConfigName() + EMAIL_SETTINGS_FILE, linesToSave);
+        FileUtil.saveContentToFile(SETTINGS_PATH, emailSettings.getPriorityId() 
+                + "-" + emailSettings.getConfigName() + EMAIL_SETTINGS_FILE, linesToSave);
     }
 
     public void deleteEmailSettings(String configName) {

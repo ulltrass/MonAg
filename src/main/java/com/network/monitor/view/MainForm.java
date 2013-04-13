@@ -969,9 +969,8 @@ public class MainForm extends javax.swing.JFrame {
         emailSettingsListModel.removeElementAt(selectedIndex);
         changeEmailSettingsFormStatus(false);
         editButton.setEnabled(false);
-        settingsController.deleteEmailSetting(emailConfigName);
+        settingsController.deleteEmailSetting(selectedIndex + "-" + emailConfigName);
         setting.getEmailSettings().remove(selectedIndex);
-
     }//GEN-LAST:event_deleteMailButtonActionPerformed
 
     private void starhubTestSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_starhubTestSendActionPerformed
