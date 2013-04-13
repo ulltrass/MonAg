@@ -15,24 +15,28 @@ import com.network.monitor.service.AppSettingsService;
 public class SettingsController {
 
     AppSettingsService appSettingsService = new AppSettingsService();
-    
+
     public void saveSettings(Setting setting) {
         appSettingsService.saveSettings(setting);
     }
-     
+
     public void addEmailSetting(EmailSettings setting) {
         appSettingsService.addEmailSettings(setting);
     }
-      public void updateEmailSetting(EmailSettings setting, String oldConfigName) {
+
+    public void updateEmailSetting(EmailSettings setting, String oldConfigName) {
         appSettingsService.updateEmailSettings(setting, oldConfigName);
     }
     
-     public Setting getSettings() {
+    public void updateEmailPriority(EmailSettings setting, Integer oldPriority) {
+        appSettingsService.updateEmailPriority(setting, oldPriority);
+    }
+
+    public Setting getSettings() {
         return appSettingsService.getSettings();
     }
 
     public void deleteEmailSetting(String emailConfigName) {
         appSettingsService.deleteEmailSettings(emailConfigName);
     }
-    
 }

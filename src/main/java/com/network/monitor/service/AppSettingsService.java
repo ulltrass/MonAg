@@ -103,6 +103,16 @@ public class AppSettingsService {
         FileUtil.saveContentToFile(SETTINGS_PATH, emailSettings.getPriorityId() 
                 + "-" + emailSettings.getConfigName() + EMAIL_SETTINGS_FILE, linesToSave);
     }
+    
+    public void updateEmailPriority(EmailSettings emailSettings, Integer oldPriority) {
+        List<File> fileList = FileUtil.getFilesFromPathThatStartWith(SETTINGS_PATH, EMAIL_SETTINGS_FILE);
+        
+        
+//        FileUtil.deleteConfigFile(SETTINGS_PATH, oldConfigName + EMAIL_SETTINGS_FILE);
+
+//        FileUtil.saveContentToFile(SETTINGS_PATH, emailSettings.getPriorityId() 
+//                + "-" + emailSettings.getConfigName() + EMAIL_SETTINGS_FILE, linesToSave);
+    }
 
     public void deleteEmailSettings(String configName) {
 

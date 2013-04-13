@@ -1019,6 +1019,7 @@ public class MainForm extends javax.swing.JFrame {
         int selectedIndex = emailSettingList.getSelectedIndex();
         if (selectedIndex > 0) {
             EmailSettings emailSettings = setting.getEmailSettings().get(selectedIndex);
+            settingsController.updateEmailSetting(emailSettings, null);
             emailSettingList.setSelectedIndex(selectedIndex - 1);
         }
 
