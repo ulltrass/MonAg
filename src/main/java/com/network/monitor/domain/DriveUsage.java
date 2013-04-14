@@ -4,11 +4,15 @@
  */
 package com.network.monitor.domain;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ovi
  */
-public class DriveUsage {
+public class DriveUsage implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     String driveLetter;
     

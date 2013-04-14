@@ -4,11 +4,15 @@
  */
 package com.network.monitor.domain;
 
+import java.io.Serializable;
+
 /**
  *
  * @author opetridean
  */
-public class Server {
+public class Server implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     private String serverName;
     private String serverIp;

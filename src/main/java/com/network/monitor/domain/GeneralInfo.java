@@ -4,11 +4,15 @@
  */
 package com.network.monitor.domain;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ovi
  */
-public class GeneralInfo {
+public class GeneralInfo implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     String userName;
     String domainName;

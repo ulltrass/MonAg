@@ -895,6 +895,10 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_scanButtonActionPerformed
 
+    public DefaultListModel getDefaultListModel(){
+        return this.defaultListModel;
+    }
+    
     private void saveMailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMailButtonActionPerformed
         int selectedIndex = -1;
         boolean isUpdate = false;

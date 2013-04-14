@@ -4,13 +4,16 @@
  */
 package com.network.monitor.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author Ovi
  */
-public class DiskUsage {
+public class DiskUsage implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     List<DriveUsage> driveUsages;
 
