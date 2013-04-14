@@ -49,6 +49,7 @@ public class MainForm extends javax.swing.JFrame {
     Setting setting;
 
     public MainForm() {
+        servers = new ArrayList<Server>();
         initComponents();
         initServersList();
         loadContactTableInfo();
@@ -895,10 +896,26 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_scanButtonActionPerformed
 
-    public DefaultListModel getDefaultListModel(){
+    public List<Server> getServersList() {
+        return servers;
+    }
+
+    public void addServer(Server server) {
+        System.out.println("Add server");
+        servers.add(server);
+        defaultListModel.addElement(server.getServerName());
+    }
+
+    public void updateServerInfo(int index, Server server) {
+        System.out.println("Update server");
+        servers.set(index, server);
+        defaultListModel.set(index, server.getServerName());
+    }
+
+    public DefaultListModel getDefaultListModel() {
         return this.defaultListModel;
     }
-    
+
     private void saveMailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMailButtonActionPerformed
         int selectedIndex = -1;
         boolean isUpdate = false;

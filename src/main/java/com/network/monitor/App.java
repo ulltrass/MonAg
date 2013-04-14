@@ -10,15 +10,16 @@ import javax.swing.UnsupportedLookAndFeelException;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args ) {
-        ClientRegistrationService clientRegistrationService = new ClientRegistrationService();
-        
-        Thread t = new Thread(clientRegistrationService);
-        t.start();
-        
+public class App {
+
+    public static void main(String[] args) {
+
         MainForm mainForm = new MainForm();
         mainForm.setVisible(true);
+
+        ClientRegistrationService clientRegistrationService = new ClientRegistrationService(mainForm);
+
+        Thread t = new Thread(clientRegistrationService);
+        t.start();
     }
 }

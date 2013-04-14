@@ -4,6 +4,7 @@
  */
 package com.network.monitor.service;
 
+import com.network.monitor.view.MainForm;
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.ServerSocket;
@@ -22,7 +23,12 @@ public class ClientRegistrationService implements Runnable {
     DatagramSocket registerServSocket;
     ServerSocket monitoringServSocket;
     MonitoringInfoServer monitoringInfoServer;
-
+    MainForm mainForm;
+    
+    public ClientRegistrationService(MainForm mainForm){
+        this.mainForm = mainForm;
+    }
+    
     @Override
     public void run() {
         try {
@@ -38,7 +44,7 @@ public class ClientRegistrationService implements Runnable {
         Thread registerThread = new Thread(registerServer);
         registerThread.start();
 
-        monitoringInfoServer = new MonitoringInfoServer(monitoringServSocket);
+        monitoringInfoServer = new MonitoringInfoServer(monitoringServSocket, mainForm);
         Thread monitoringThread = new Thread(monitoringInfoServer);
         monitoringThread.start();
 

@@ -5,6 +5,7 @@
 package com.network.monitor.service;
 
 import com.network.monitor.domain.Server;
+import com.network.monitor.view.MainForm;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +15,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.List;
 
 /**
  *
@@ -22,9 +24,11 @@ import java.net.Socket;
 class MonitoringInfoServer implements Runnable {
 
     ServerSocket socket;
+    MainForm mainForm;
 
-    public MonitoringInfoServer(ServerSocket ds) {
+    public MonitoringInfoServer(ServerSocket ds, MainForm mainForm) {
         socket = ds;
+        this.mainForm = mainForm;
 
     }
 
@@ -43,8 +47,29 @@ class MonitoringInfoServer implements Runnable {
 
                 is.close();
                 s.close();
-                
-                System.out.println("Received object: " + server.getServerIp());
+
+                System.out.println("Server: " + server.getServerInfo().getGeneralInfo().getComputerName());
+
+                List<Server> servers = mainForm.getServersList();
+                if (servers.isEmpty()) {
+                    mainForm.addServer(server);
+                } else {
+                    boolean found = false;
+                    int index = -1;
+                    for (Server existingServer : servers) {
+                        index++;
+                        if (server.getServerInfo().getGeneralInfo().getComputerName()
+                                .equals(existingServer.getServerInfo().getGeneralInfo().getComputerName())) {
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        mainForm.addServer(server);
+                    } else {
+                        mainForm.updateServerInfo(index, server);
+                    }
+                }
+
 
             } catch (IOException ex) {
                 ex.printStackTrace();
