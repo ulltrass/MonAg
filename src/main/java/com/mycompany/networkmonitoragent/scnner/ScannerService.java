@@ -4,7 +4,9 @@
  */
 package com.mycompany.networkmonitoragent.scnner;
 
-import com.mycompany.networkmonitoragent.service.CSVParser;
+import com.mycompany.networkmonitoragent.service.CPUMonitoringService;
+import com.mycompany.networkmonitoragent.service.MemoryMonitoringService;
+import com.mycompany.networkmonitoragent.util.CSVParser;
 import com.mycompany.networkmonitoragent.service.ScriptExecutorService;
 import com.mycompany.networkmonitoragent.util.FileUtil;
 import com.mycompany.networkmonitoragent.util.ScriptFinder;
@@ -33,6 +35,8 @@ public class ScannerService {
 
     ScriptExecutorService scriptExecutorService = new ScriptExecutorService();
     CSVParser cSVParser = new CSVParser();
+    MemoryMonitoringService memoryMonitoringService = new MemoryMonitoringService();
+    CPUMonitoringService cpuMonitoringService = new CPUMonitoringService();
 
     public ScannerService() {
     }
@@ -51,8 +55,13 @@ public class ScannerService {
         parsedValue = cSVParser.parseCSVFile(file.getAbsolutePath());
 
         server = getServerMainInfo(parsedValue);
+        
+        memoryMonitoringService.setInfo(server);
+        cpuMonitoringService.setInfo(server);
+        
+        
+        
         servers.add(server);
-
         return server;
     }
 

@@ -2,8 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.networkmonitoragent.scnner;
+package com.mycompany.networkmonitoragent.service;
 
+import com.mycompany.networkmonitoragent.scnner.ScannerService;
+import com.network.monitor.domain.MainServer;
 import com.network.monitor.domain.Server;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
