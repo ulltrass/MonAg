@@ -5,40 +5,30 @@
 package com.mycompany.networkmonitoragent.service;
 
 import com.network.monitor.domain.Server;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.hyperic.sigar.CpuInfo;
+import org.hyperic.sigar.CpuPerc;
+import org.hyperic.sigar.Sigar;
+import org.hyperic.sigar.SigarException;
 
 /**
  *
  * @author opetridean
  */
 public class CPUMonitoringService {
-
-    public void setInfo(Server server) {
-         /* Method to get Informations about the CPU(s): */
-        System.out.println("************************************");
-        System.out.println("*** Informations about the CPUs: ***");
-        System.out.println("************************************\n");
-
-        CpuInfo[] cpuinfo = null;
-        try {
-            cpuinfo = sigar.getCpuInfoList();
-        } catch (SigarException se) {
-            se.printStackTrace();
-        }
-
-
-
-        System.out.println("---------------------");
-        System.out.println("Sigar found " + cpuinfo.length + " CPU(s)!");
-        System.out.println("---------------------");
-
-        for (int i = 0; i < cpuinfo.length; i++) {
-            Map<String, String> map = cpuinfo[i].toMap();
-            System.out.println("CPU " + i + ": " + map);
-            System.out.println("My: " + map.get("Model"));
-        }
-
-
-        System.out.println("\n************************************\n");
-    }
     
+    Sigar sigar = new Sigar();
+    
+    public void setInfo(Server server) {
+        CpuPerc perc;
+        try {
+            perc = sigar.getCpuPerc();
+            server.getServerInfo().setCpuUsage((int) (perc.getCombined() * 100));
+        } catch (SigarException ex) {
+            Logger.getLogger(CPUMonitoringService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }
