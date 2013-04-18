@@ -13,7 +13,7 @@ import java.io.File;
 public class ScriptFinder {
     
     public static File getScriptFileForDiskUsage(){
-        return new File("./Get_Detailed_Specks_On_Local_Test_CSV.vbs");
+        return new File("./Detailed_Local_Specks.vbs");
     }
     
 }

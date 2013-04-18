@@ -1,0 +1,20 @@
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  
+
+    <!-- general application log -->
+    <appender name="MainLogFile" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="netagent.log"/>
+        <param name="datePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd-MM-yyyy HH:mm:ss,SSS} %-5p %t [%-40.60c] %x - %m%n"/>
+        </layout>
+    </appender>
+
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="MainLogFile"/>
+        <appender-ref ref="stdout"/>
+    </root>
+
+</log4j:configuration>

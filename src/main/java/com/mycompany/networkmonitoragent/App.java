@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
+import org.apache.log4j.Logger;
 
 import org.hyperic.sigar.CpuInfo;
 import org.hyperic.sigar.FileSystem;
@@ -23,6 +24,7 @@ import org.hyperic.sigar.SigarException;
 public class App {
 
     private static Sigar sigar = new Sigar();
+    private static final Logger LOGGER = Logger.getLogger(App.class);
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
@@ -36,7 +38,7 @@ public class App {
             Server server = null;
 
             while (true) {
-                System.out.println("Getting info");
+                LOGGER.info("Getting info");
                 server = scannerService.getServerInfo();
 
                 infoSenderService = new InfoSenderService(mainServer);
@@ -45,7 +47,7 @@ public class App {
             }
 
         } else {
-            System.out.println("Unable to connect to main server");
+            LOGGER.info("Unable to connect to main server");
         }
 
     }
