@@ -41,8 +41,7 @@ public class CSVParser {
                                 driveInfo.add(property);
                             }
                         }
-                        Logger.getLogger(CSVParser.class.getName()).log(Level.WARNING, "Invalid log line <"
-                                + line + ">");
+                       
                     } else {
                         property = new HashMap<String, String>();
                         property.put(line.split(",")[0].trim(), line.split(",")[1].trim());

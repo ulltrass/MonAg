@@ -5,6 +5,7 @@ import com.network.monitor.domain.MainServer;
 import com.network.networkmonitoragent.service.MainServerConnectionService;
 import com.network.networkmonitoragent.scnner.ScannerService;
 import com.network.monitor.domain.Server;
+import com.network.networkmonitoragent.service.EchoService;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -29,6 +30,9 @@ public class App {
 
         MainServerConnectionService mainServerConnectionService = new MainServerConnectionService();
         MainServer mainServer = mainServerConnectionService.findServer();
+        EchoService echoService = new EchoService();
+        Thread t = new Thread(echoService);
+        t.start();
 
         InfoSenderService infoSenderService = null;
 
