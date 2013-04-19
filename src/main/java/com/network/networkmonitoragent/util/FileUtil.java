@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.network.networkmonitoragent.util;
 
 import java.io.BufferedReader;
@@ -20,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Ovi
+ * @author
  */
 public class FileUtil {
 

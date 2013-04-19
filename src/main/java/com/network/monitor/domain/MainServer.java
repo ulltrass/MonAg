@@ -1,12 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.network.monitor.domain;
 
 /**
  *
- * @author Ovi
+ * @author
  */
 public class MainServer {
     

@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.network.networkmonitoragent.util;
 
 import java.io.File;
 
 /**
  *
- * @author Ovi
+ * @author
  */
 public class ScriptFinder {
     

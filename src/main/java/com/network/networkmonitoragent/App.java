@@ -18,7 +18,6 @@ import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
 
 /**
- * Hello world!
  *
  */
 public class App {

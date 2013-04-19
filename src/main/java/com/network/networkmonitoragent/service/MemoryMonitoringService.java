@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.network.networkmonitoragent.service;
 
 import com.network.monitor.domain.Server;
@@ -12,7 +8,7 @@ import org.hyperic.sigar.SigarException;
 
 /**
  *
- * @author opetridean
+ * @author
  */
 public class MemoryMonitoringService {
     Sigar sigar = new Sigar();
