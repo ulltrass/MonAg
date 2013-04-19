@@ -2,14 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.networkmonitoragent.scnner;
+package com.network.networkmonitoragent.scnner;
 
-import com.mycompany.networkmonitoragent.service.CPUMonitoringService;
-import com.mycompany.networkmonitoragent.service.MemoryMonitoringService;
-import com.mycompany.networkmonitoragent.util.CSVParser;
-import com.mycompany.networkmonitoragent.service.ScriptExecutorService;
-import com.mycompany.networkmonitoragent.util.FileUtil;
-import com.mycompany.networkmonitoragent.util.ScriptFinder;
+import com.network.networkmonitoragent.service.CPUMonitoringService;
+import com.network.networkmonitoragent.service.MemoryMonitoringService;
+import com.network.networkmonitoragent.util.CSVParser;
+import com.network.networkmonitoragent.service.ScriptExecutorService;
+import com.network.networkmonitoragent.util.FileUtil;
+import com.network.networkmonitoragent.util.ScriptFinder;
 import com.network.monitor.domain.DiskUsage;
 import com.network.monitor.domain.DriveUsage;
 import com.network.monitor.domain.GeneralInfo;

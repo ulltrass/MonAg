@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.networkmonitoragent.service;
+package com.network.networkmonitoragent.service;
 
 import java.io.BufferedReader;
 import java.io.File;

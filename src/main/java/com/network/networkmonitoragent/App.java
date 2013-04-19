@@ -1,9 +1,9 @@
-package com.mycompany.networkmonitoragent;
+package com.network.networkmonitoragent;
 
-import com.mycompany.networkmonitoragent.service.InfoSenderService;
+import com.network.networkmonitoragent.service.InfoSenderService;
 import com.network.monitor.domain.MainServer;
-import com.mycompany.networkmonitoragent.service.MainServerConnectionService;
-import com.mycompany.networkmonitoragent.scnner.ScannerService;
+import com.network.networkmonitoragent.service.MainServerConnectionService;
+import com.network.networkmonitoragent.scnner.ScannerService;
 import com.network.monitor.domain.Server;
 import java.io.File;
 import java.io.IOException;
